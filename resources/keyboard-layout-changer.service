@@ -1,0 +1,16 @@
+[Unit]
+Description=Keyboard Layout Changer Service
+After=network.target
+
+[Service]
+User=tugh
+Environment="DISPLAY=:0"
+Environment="XDG_RUNTIME_DIR=/run/user/1000"
+Environment="PULSE_RUNTIME_PATH=/run/user/1000/pulse/"
+WorkingDirectory=/usr/local/bin/
+ExecStart=/usr/bin/java -Djavafx.verbose=true -jar /usr/local/bin/keyboard-layout-changer.jar
+Restart=on-failure
+RestartSec=1
+
+[Install]
+WantedBy=tugh.target
